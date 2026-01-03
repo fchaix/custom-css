@@ -1,0 +1,255 @@
+@import url(fonts/clear-sans.css);
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #002b36; /* fond général Solarized Dark */
+  color: #839496;      /* texte principal */
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
+
+body {
+  margin: 80px 0;
+}
+
+.heading:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+h1.title {
+  font-size: 80px;
+  font-weight: bold;
+  margin: 0;
+  float: left;
+  color: #b58900; /* jaune Solarized */
+}
+
+.scores-container {
+  float: right;
+  text-align: right;
+}
+
+.score-container,
+.best-container {
+  position: relative;
+  display: inline-block;
+  background: #073642; /* fond secondaire */
+  padding: 15px 25px;
+  font-size: 25px;
+  height: 25px;
+  line-height: 47px;
+  font-weight: bold;
+  border-radius: 3px;
+  color: #eee8d5;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.score-container:after,
+.best-container:after {
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  left: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #586e75;
+}
+
+.score-container:after { content: "Score"; }
+.best-container:after { content: "Record"; }
+
+a {
+  color: #268bd2;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #073642;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.game-container {
+  margin-top: 40px;
+  position: relative;
+  padding: 15px;
+  cursor: default;
+  background: #073642;
+  border-radius: 6px;
+  width: 500px;
+  height: 500px;
+  box-sizing: border-box;
+}
+
+.game-container .game-message {
+  background: rgba(238, 232, 213, 0.6);
+}
+
+.grid-container {
+  position: absolute;
+  z-index: 1;
+}
+
+.grid-row {
+  margin-bottom: 15px;
+}
+
+.grid-cell {
+  width: 106.25px;
+  height: 106.25px;
+  margin-right: 15px;
+  float: left;
+  border-radius: 3px;
+  background: rgba(88, 110, 117, 0.35);
+}
+
+.tile-container {
+  position: absolute;
+  z-index: 2;
+}
+
+.tile,
+.tile .tile-inner {
+  width: 107px;
+  height: 107px;
+  line-height: 116.25px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 55px;
+}
+
+/* Tuiles */
+
+.tile.tile-2 .tile-inner {
+  background: #586e75;
+  color: #eee8d5;
+}
+
+.tile.tile-4 .tile-inner {
+  background: #657b83;
+  color: #eee8d5;
+}
+
+.tile.tile-8 .tile-inner {
+  background: #b58900;
+  color: #002b36;
+}
+
+.tile.tile-16 .tile-inner {
+  background: #cb4b16;
+  color: #fdf6e3;
+}
+
+.tile.tile-32 .tile-inner {
+  background: #dc322f;
+  color: #fdf6e3;
+}
+
+.tile.tile-64 .tile-inner {
+  background: #d33682;
+  color: #fdf6e3;
+}
+
+.tile.tile-128 .tile-inner {
+  background: #6c71c4;
+  color: #fdf6e3;
+  font-size: 45px;
+}
+
+.tile.tile-256 .tile-inner {
+  background: #268bd2;
+  color: #fdf6e3;
+  font-size: 45px;
+}
+
+.tile.tile-512 .tile-inner {
+  background: #2aa198;
+  color: #002b36;
+  font-size: 45px;
+}
+
+.tile.tile-1024 .tile-inner {
+  background: #859900;
+  color: #002b36;
+  font-size: 35px;
+}
+
+.tile.tile-2048 .tile-inner {
+  background: #b58900;
+  color: #002b36;
+  font-size: 35px;
+}
+
+.tile.tile-super .tile-inner {
+  background: #001f27;
+  color: #fdf6e3;
+  font-size: 30px;
+}
+
+/* Animations */
+
+.tile-new .tile-inner {
+  animation: appear 200ms ease 100ms backwards;
+}
+
+.tile-merged .tile-inner {
+  z-index: 20;
+  animation: pop 200ms ease 100ms backwards;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 520px) {
+  html, body {
+    font-size: 15px;
+  }
+
+  .container {
+    width: 280px;
+  }
+
+  .game-container {
+    width: 280px;
+    height: 280px;
+  }
+
+  .grid-cell {
+    width: 57.5px;
+    height: 57.5px;
+  }
+
+  .tile,
+  .tile .tile-inner {
+    width: 58px;
+    height: 58px;
+    line-height: 67.5px;
+    font-size: 35px;
+  }
+
+  .tile.tile-128 .tile-inner,
+  .tile.tile-256 .tile-inner,
+  .tile.tile-512 .tile-inner {
+    font-size: 25px;
+  }
+
+  .tile.tile-1024 .tile-inner,
+  .tile.tile-2048 .tile-inner {
+    font-size: 15px;
+  }
+}
+
